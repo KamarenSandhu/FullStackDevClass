@@ -1,30 +1,30 @@
 
 
-exports.getDate = function() {
-    const today = new Date();
+// exports.getDate = function() {
+//     const today = new Date();
     
-    const options = {
-        weekday: 'long',
-        day: 'numeric',
-        month: 'long'
-    };
+//     const options = {
+//         weekday: 'long',
+//         day: 'numeric',
+//         month: 'long'
+//     };
     
-    return today.toLocaleDateString('en-us',options);
+//     return today.toLocaleDateString('en-us',options);
 
-    return day;
-}
+//     return day;
+// }
 
-exports.getDay = function (){
-    const today = new Date();
+// exports.getDay = function (){
+//     const today = new Date();
     
-    const options = {
-        weekday: 'long'
-    };
+//     const options = {
+//         weekday: 'long'
+//     };
     
-    return today.toLocaleDateString('en-us',options);
+//     return today.toLocaleDateString('en-us',options);
 
-    return day;
-}
+//     return day;
+// }
 
-console.log(module.exports)
+// console.log(module.exports)
     
