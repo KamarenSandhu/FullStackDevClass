@@ -1,38 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./Header";
-import Note from "./Note";
 import Footer from "./Footer";
-import notes from "../notes"
+import Note from "./Note";
+import CreateArea from "./CreateArea";
 
-// function createNote(entry){
-//     return(
-//         <Note 
-//             key = {entry.id}
-//             title = {entry.title}
-//             content = {entry.content}
-//         />
-//     )
-// }
-// alternative way of writing it
+function App() {
+  const [notes, setNotes]  = useState([])
 
-function App(){
-    return(
-        <div>
-            <Header />
-            {/* alternative call of function */}
-            {/* notes.map(createNote) */}
-            {notes.map(entry => (
-            <Note 
-                key = {entry.id}
-                title = {entry.title}
-                content = {entry.content}
+  // parameter in this function is passed in from createArea.jsx on line 24 in submitNoteFunction
+  function addNote(newNote){
+    setNotes(prevNotes => {
+      return [...prevNotes, newNote]
+    })
+  }
+  
+  function deleteNote(id){
+    setNotes(prevNotes => {
+      return prevNotes.filter((noteItem, index) =>{
+        return index !== id
+      });
+    });
+  }
+  return (
+    <div>
+      <Header />
+      <CreateArea
+        onAdd={addNote}
+      />
+      {notes.map((noteItem, index) => {
+        return (
+          <Note 
+            key={index} 
+            id={index} 
+            title={noteItem.title} 
+            content={noteItem.content} 
+            onDelete={deleteNote}
             />
-            )
-            )}
-            <Footer />
-        </div>
-    );
-
+          );
+      })}
+      <Footer />
+    </div>
+  );
 }
 
 export default App;
